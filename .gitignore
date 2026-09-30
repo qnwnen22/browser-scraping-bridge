@@ -1,0 +1,24 @@
+# Build outputs and local IDE state
+**/bin/
+**/obj/
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.log
+node_modules/
+
+# Extension packages, signing keys and local secrets
+*.crx
+*.pem
+*.key
+*.pfx
+*.p12
+.env
+.env.*
+!.env.example
+appsettings.Local.json
+appsettings.*.Local.json
