@@ -38,6 +38,10 @@ public sealed class BrowserController(BrowserRequestCoordinator coordinator) : C
             var result = await coordinator.FetchAsync(uri, request, cancellationToken);
             return Ok(result);
         }
+        catch (ArgumentException exception)
+        {
+            return BadRequest(new ApiErrorResponse(exception.Message));
+        }
         catch (BrowserUnavailableException exception)
         {
             return Problem(detail: exception.Message, statusCode: StatusCodes.Status503ServiceUnavailable);

@@ -16,6 +16,9 @@ label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 8px; }
 input, textarea, button { font: inherit; }
 input, textarea { width: 100%; border: 1px solid #bdc8d3; border-radius: 7px; padding: 10px 12px; color: #17212b; background: #fff; }
 input:focus, textarea:focus { outline: 3px solid #2563eb25; border-color: #2563eb; }
+select { width: 100%; padding: 10px 12px; margin-bottom: 18px; font: inherit; border: 1px solid #bdc8d3; border-radius: 7px; background: #fff; }
+#render-html { width: auto; }
+#parse-fields { margin-top: 18px; }
 .form-bottom { display: flex; align-items: end; gap: 16px; margin-top: 18px; }
 .wait-field { flex: 1; }
 .wait-field input { max-width: 200px; }

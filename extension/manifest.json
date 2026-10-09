@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "Browser HTML Bridge",
-  "version": "1.2.0",
+  "version": "1.4.2",
   "minimum_chrome_version": "116",
   "description": "Uses the current browser profile to retrieve HTML from HTTP and HTTPS websites.",
   "permissions": [
     "tabs",
     "scripting",
+    "cookies",
     "webRequest",
     "declarativeNetRequestWithHostAccess"
   ],
@@ -15,7 +16,7 @@
     "https://*/*"
   ],
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' ws://127.0.0.1:5180"
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' http: https: ws://127.0.0.1:5180"
   },
   "background": {
     "service_worker": "service-worker.js"

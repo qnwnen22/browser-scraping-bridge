@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>사이트별 수집 테스트 · Browser HTML Bridge</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/sourcing.js?v=1.4.2" defer></script>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">BROWSER HTML BRIDGE</p>
+    <h1>사이트별 수집 테스트</h1>
+    <p class="intro">사이트와 URL을 지정해 상품 목록·상세 정보 또는 수집 원문을 조회합니다.</p>
+    <p><a href="/">HTML 요청 테스트</a></p>
+    <p id="status" class="status" role="status"><span class="dot"></span><span>브라우저 연결 확인 중</span></p>
+  </header>
+  <section class="card">
+    <form id="sourcing-form">
+      <label for="site">사이트 / 파서</label>
+      <select id="site" required></select>
+      <p id="site-info" class="hint"></p>
+      <label for="operation">기능</label>
+      <select id="operation">
+        <option value="product">상품 상세</option>
+        <option value="page">상품 목록</option>
+        <option value="raw">수집 원문</option>
+        <option value="parse">저장된 원문 파싱</option>
+        <option value="login">로그인 필요 여부 확인</option>
+      </select>
+      <label for="url">사이트 URL</label>
+      <input id="url" type="url" required placeholder="수집할 상품 또는 목록의 HTTP/HTTPS 주소" autocomplete="off">
+      <div class="form-bottom">
+        <div class="wait-field"><label for="page">목록 페이지</label><input id="page" type="number" min="1" value="1" required></div>
+        <div class="wait-field"><label for="wait">DOM 추가 대기 (ms)</label><input id="wait" type="number" min="0" max="10000" value="900" required></div>
+        <button id="submit-button" type="submit">수집 요청</button>
+      </div>
+      <details class="request-options">
+        <summary>헤더·쿠키·수집 옵션</summary>
+        <label for="headers">요청 헤더 (JSON 객체)</label><textarea id="headers" class="json-input" spellcheck="false" autocomplete="off"></textarea>
+        <label for="cookies">요청 쿠키 (JSON 객체)</label><textarea id="cookies" class="json-input" spellcheck="false" autocomplete="off"></textarea>
+        <p class="hint">생략하면 현재 브라우저의 쿠키를 사용합니다. 지정한 헤더·쿠키는 입력 URL과 같은 출처의 수집 요청에 적용합니다. 쿠키를 지정하면 Cookie 헤더 전체를 교체합니다.</p>
+        <label for="collect-options">사이트별 수집 옵션 (JSON 객체)</label><textarea id="collect-options" class="json-input" spellcheck="false" placeholder='{"musinsaCollectOption":{}}'></textarea>
+        <label for="api-settings">API 키 / 계정 설정 (JSON 객체)</label><textarea id="api-settings" class="json-input" spellcheck="false" autocomplete="off"></textarea>
+        <p class="hint">도매매: domemeApiKey. 오너클랜: ownerClanToken 또는 ownerClanAccount + ownerClanPassword. 타오바오: taobaoApiToken.</p>
+        <label for="timeout">전체 수집 제한 시간 (초)</label><input id="timeout" type="number" min="10" max="600" value="180" required>
+        <label for="render-html"><input id="render-html" type="checkbox"> 입력한 상품 URL의 GET 요청을 DOM HTML로 수집</label>
+        <p class="hint">기본은 브라우저가 받은 응답 원문입니다. 추가 API 요청은 JSON·HTML 원문으로 처리합니다.</p>
+      </details>
+      <section id="parse-fields" hidden>
+        <label for="raw-html">저장된 HTML</label><textarea id="raw-html" class="json-input" spellcheck="false"></textarea>
+        <label for="raw-data">저장된 data (JSON)</label><textarea id="raw-data" class="json-input" spellcheck="false"></textarea>
+        <p class="hint">원문 조회 결과의 html, data를 입력합니다. 파서마다 지원 여부가 다릅니다.</p>
+      </section>
+    </form>
+    <p id="message" role="status" aria-live="polite"></p>
+  </section>
+  <section class="card"><h2>JSON 결과</h2><textarea id="html-output" readonly spellcheck="false" aria-label="수집 결과 JSON"></textarea></section>
+</main>
+</body>
+</html>

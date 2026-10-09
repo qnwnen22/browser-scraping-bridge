@@ -24,9 +24,10 @@ async function refreshStatus() {
   try {
     const response = await fetch("/api/status", { cache: "no-store" });
     if (!response.ok) throw new Error("Status unavailable");
-    const state = await response.json();
-    statusNode.classList.toggle("online", state.browserConnected);
-    statusNode.lastElementChild.textContent = state.browserConnected ? "브라우저 연결됨" : "브라우저 확장 연결 대기 중";
+    const status = await response.json();
+    statusNode.classList.toggle("online", Boolean(status.browserConnected));
+    statusNode.lastElementChild.textContent = status.browserConnected ?
+      "브라우저 연결됨" : "브라우저 확장 연결 대기 중";
   } catch {
     statusNode.classList.remove("online");
     statusNode.lastElementChild.textContent = "서버에 연결할 수 없습니다";

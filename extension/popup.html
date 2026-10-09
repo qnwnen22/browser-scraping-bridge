@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ScrapingLab Bridge</title>
   <style>
-    body { width: 280px; margin: 0; padding: 18px; color: #18232e; font: 14px/1.5 system-ui, sans-serif; }
+    body { width: 320px; margin: 0; padding: 18px; color: #18232e; font: 14px/1.5 system-ui, sans-serif; }
     h1 { margin: 0 0 14px; font-size: 17px; }
     #state { display: flex; align-items: center; gap: 8px; }
     .dot { width: 9px; height: 9px; border-radius: 50%; background: #9aa5af; }
     .online .dot { background: #178b5b; }
     p { color: #526170; }
+    #registration-error { color: #a32d2d; }
   </style>
 </head>
 <body>
   <h1>ScrapingLab 브리지</h1>
   <div id="state"><span class="dot"></span><span>연결 확인 중</span></div>
   <p>연결 대상: <code>127.0.0.1:5180</code></p>
+  <p id="registration-error" role="alert" hidden></p>
   <script src="popup.js"></script>
 </body>
 </html>
